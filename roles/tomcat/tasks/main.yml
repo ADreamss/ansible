@@ -1,0 +1,44 @@
+---
+#mio XD
+- block:
+  - name: Dowload tomcat version 8.5.15
+    get_url:
+      url: http://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.15/bin/apache-tomcat-8.5.15.tar.gz
+      mode: 0755
+      dest: /opt/tomcat_v8.5.15.tar.gz
+
+  - name: Uncompress tomcat
+    unarchive:
+      copy: no
+      src: /opt/tomcat_v8.5.15.tar.gz
+      dest: /opt/
+      owner: "{{ansible_user}}"
+      group: "{{ansible_user}}"
+      mode: 0755
+
+  - name: Update Permissions
+    file:
+      path: /opt/apache-tomcat-8.5.15/conf
+      mode: "g+r"
+      recurse: yes
+    file:
+      path: /opt/apache-tomcat-8.5.15/conf
+      mode: "g+x"
+    file:
+      path: /opt/apache-tomcat-8.5.15/
+      owner: "{{ansible_user}}"
+      group: "{{ansible_user}}"
+      recurse: yes
+    
+  - name: Update file tomcat.service
+    template: src=tomcat.service dest=/etc/systemd/system/
+
+  - name: Daemon reload
+    systemd:
+      daemon_reload: yes
+      name: tomcat
+  
+  - name: start tomcat
+    systemd:
+      state: started
+      name: tomcat

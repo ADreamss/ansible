@@ -1,0 +1,36 @@
+---
+# tasks file for docker
+- block:
+  - name: Add GPG key
+    shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+
+  - name: Install apt transport https
+    apt:
+      name: apt-transport-https
+      state: present
+  
+  - name: add docker repository
+    apt_repository:
+      repo: deb https://download.docker.com/linux/debian jessie stable
+      filename: docker
+      state: present    
+  
+  - name: Update repository
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+
+  - name: Install docker ce
+    apt:
+      name: docker-ce
+      state: present
+
+  - debug: msg="Adding {{docker_user}} to docker group"
+
+  - name: Add user to docker group
+    user:
+      name: "{{docker_user}}"
+      append: yes
+      groups: docker
+
+

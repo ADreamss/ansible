@@ -1,0 +1,6 @@
+---
+- block:
+  - name: Dowload jenkins war
+    get_url: 
+      url: http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+      dest: /opt/apache-tomcat-8.5.15/webapps

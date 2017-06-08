@@ -1,0 +1,26 @@
+---
+- block:
+  - name: Dowload Maven 3.3.9
+    get_url:
+      url: https://archive.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+      mode: 0755
+      dest: /opt/apache-maven-3.3.9-bin.tar.gz
+
+  - name: Uncompress mave
+    unarchive:
+      copy: no
+      src: /opt/apache-maven-3.3.9-bin.tar.gz
+      dest: /opt/
+      owner: "{{ansible_user}}"
+      group: "{{ansible_user}}"
+      mode: 0755
+
+  # - name: Add the bin directori to the path
+  #   environment:
+  #     PATH: $PATH:/opt/apache-maven-3.5.0/bin
+
+  - name: Add PATH on .bashrc
+    lineinfile:
+      dest: '/etc/bash.bashrc'
+      state: present
+      line: export PATH=$PATH:/opt/apache-maven-3.3.9/bin

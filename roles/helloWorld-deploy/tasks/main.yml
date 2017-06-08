@@ -1,0 +1,6 @@
+---
+- block:
+  - name: Deploy hello-world 
+    get_url: 
+      url: http://159.203.129.181:8000/hello-world-war-1.0.0.war
+      dest: /opt/apache-tomcat-8.5.15/webapps

@@ -1,0 +1,13 @@
+---
+- hosts: jenkins
+  become: true
+
+  pre_tasks:
+    - debug: msg='Starting docker setup playbook'
+  
+  post_tasks:
+    - debug: msg='Finished docker setup playbook'
+
+  roles:
+    - { role: debian_base }
+    - { role: docker, docker_user: "{{ansible_user}}" }

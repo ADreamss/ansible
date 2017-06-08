@@ -1,0 +1,30 @@
+---
+- block:
+  - name: Dowload latest jdk version
+    get_url:
+      url: http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz
+      headers: 'Cookie: oraclelicense=accept-securebackup-cookie'
+      mode: u=rwx,g=rx,o=rx
+      dest: /opt/java_jdk8.tar.gz
+
+  - name: Uncompress latest jdk
+    unarchive:
+      copy: no
+      src: /opt/java_jdk8.tar.gz
+      dest: /opt
+      owner: root
+      group: root
+      mode: u=rwx,g=rx,o=rx
+
+  - name: Update alternatives for java
+    command: update-alternatives --install /usr/bin/java java /opt/jdk1.8.0_131/bin/java 100
+
+  - name: Update alternatives for javac
+    command: update-alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_131/bin/javac 100
+
+  - name: Add JAVA_HOME on .bashrc
+    lineinfile:
+      dest: '/etc/bash.bashrc'
+      state: present
+      line: export JAVA_HOME='/opt/jdk1.8.0_131'
+

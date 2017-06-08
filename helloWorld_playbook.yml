@@ -1,0 +1,7 @@
+---
+- hosts: dev
+  become: true
+  roles:
+    - { role: java }
+    - { role: tomcat, ansible_user: adrian }
+    - { role: helloWorld-deploy }

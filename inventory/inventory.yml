@@ -1,0 +1,5 @@
+[jenkins]
+159.203.129.181 ansible_user=adrian ansible_become_password=adrian
+
+[dev]
+165.227.68.51 ansible_user=adrian ansible_become_password=adrian

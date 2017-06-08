@@ -1,0 +1,41 @@
+- block:
+  - name: Update repositories
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+     
+  - name: Install base packages
+    apt:
+      name: "{{item}}"
+    with_items:
+      - apt-transport-https
+      - build-essential
+      - git
+      - vim
+      - htop
+      - lsof
+      - dstat
+      - strace
+      - tmux
+
+  - name: tmux confing file 
+    template:
+      src: templates/tmux.conf
+      dest: "/home/{{ansible_user}}/.tmux.conf"
+      owner: "{{ansible_user}}"
+      group: "{{ansible_user}}"
+      mode: 0755
+  
+  - name: vim confing file
+    template:
+      src: templates/vimrc
+      dest: "/home/{{ansible_user}}"/.vimrc"
+      owner: "{{ansible_user}}"
+      group: "{{ansible_user}}"
+      mode: 0755
+
+
+
+
+
+
