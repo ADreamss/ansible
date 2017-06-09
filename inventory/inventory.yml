@@ -1,8 +1,8 @@
 [jenkins]
-67.207.83.85 ansible_user=adrian ansible_become_password=adrian
+67.207.83.85 ansible_user=adrian ansible_become_password=adrian ansible_ssh_common_args='-o ForwardAgent=yes'
 
 [dev]
-67.205.174.155 ansible_user=adrian ansible_become_password=adrian
+67.205.174.155 ansible_user=adrian ansible_become_password=adrian ansible_ssh_common_args='-o ForwardAgent=yes' ansible_become_method=sudo
 
 [dev:vars]
 ipJenkins=67.207.83.85
