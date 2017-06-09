@@ -1,0 +1,10 @@
+---
+- hosts: jenkins
+  become: true
+  roles:
+    - { role: debian_base }
+    - { role: java }
+    - { role: tomcat, ansible_user: adrian }
+    - { role: docker, docker_user: "{{ansible_user}}" }
+    - { role: maven, ansible_user: adrian}
+    - { role: jenkins }

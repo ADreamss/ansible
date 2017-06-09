@@ -2,6 +2,7 @@
 - hosts: dev
   become: true
   roles:
+    - { role: debian_base }
     - { role: java }
     - { role: tomcat, ansible_user: adrian }
     - { role: helloWorld-deploy }

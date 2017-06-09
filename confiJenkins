@@ -1,0 +1,10 @@
+/opt/jdk1.8.0_131
+/opt/apache-maven-3.3.9
+
+
+ls
+mvn clean install
+mkdir ~/nexus/
+cp target/hello-world-war-1.0.0.war ~/nexus/
+cd ~/nexus/
+python -m SimpleHTTPServer 8000

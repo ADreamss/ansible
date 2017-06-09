@@ -1,5 +1,0 @@
----
-- hosts: all
-  become: true
-  roles:
-    - { role: maven, ansible_user: adrian}
