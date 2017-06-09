@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Install any needed packages
 RUN pip install ansible
-RUN apt-get install -y sshpass
+RUN apt-get update && apt-get install -y sshpass
 
 # Copy the current directory contents into the container at /app
 ADD . /app
