@@ -2,7 +2,7 @@
 67.207.83.85 ansible_user=adrian ansible_become_password=adrian
 
 [dev]
-67.205.174.155 ansible_user=adrian ansible_become_password=adrian
+67.205.174.155 ansible_user=adrian ansible_password=adrian ansible_become_password=adrian
 
 [dev:vars]
 ipJenkins=67.207.83.85
