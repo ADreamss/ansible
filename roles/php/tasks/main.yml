@@ -1,8 +1,0 @@
----
-- block:
-  - name: Add the ondrej PHP APP
-    apt_repository: repo='ppa:ondrej/php'
-  - name: Update the apt cahe 
-    apt: update_cache=yes cache_velid_time=3600
-  - name: Install PHP
-    apt: name=php state=installed

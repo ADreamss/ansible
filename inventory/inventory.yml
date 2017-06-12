@@ -1,11 +1,8 @@
 [jenkins]
-67.207.83.85 ansible_user=adrian ansible_become_password=adrian
-
-#[dev]
-#67.205.174.155 ansible_user=adrian ansible_password=adrian  ansible_become_password=adrian
+198.199.70.6 ansible_user={{user}} ansible_password={{password}} ansible_become_password={{become_password}}
 
 [dev]
-67.205.174.155 ansible_ssh_user=adrian ansible_ssh_pass=adrian ansible_become_password=adrian
+67.207.83.5 ansible_user={{user}} ansible_password={{password}} ansible_become_password={{become_password}}
 
 [dev:vars]
-ipJenkins=67.207.83.85
+ipJenkins=198.199.70.6

@@ -1,8 +1,10 @@
 ---
 - hosts: dev
   become: true
+  vars_files:
+    - group_vars/variables.yml
   roles:
     - { role: debian_base }
     - { role: java }
-    - { role: tomcat, ansible_user: adrian }
+    - { role: tomcat }
     - { role: helloWorld-deploy }
