@@ -1,4 +1,5 @@
 [jenkins]
+<<<<<<< HEAD
 198.199.70.6 ansible_user={{user}} ansible_password={{password}} ansible_become_password={{become_password}}
 
 [dev]
@@ -6,3 +7,15 @@
 
 [dev:vars]
 ipJenkins=198.199.70.6
+=======
+198.199.72.58 ansible_user=adrian ansible_become_password=adrian
+
+#[dev]
+#174.138.44.23 ansible_user=adrian ansible_password=adrian  ansible_become_password=adrian
+
+[dev]
+174.138.44.23 ansible_ssh_user=adrian ansible_ssh_pass=adrian ansible_become_password=adrian
+
+[dev:vars]
+ipJenkins=198.199.72.58
+>>>>>>> 8cf5537cd547836233c485f4fd3e5d1545bdfb9a
